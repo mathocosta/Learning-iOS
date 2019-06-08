@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="M4Y-Lb-cyx">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Notification View Controller-->
+        <scene sceneID="cwh-vc-ff4">
+            <objects>
+                <viewController id="M4Y-Lb-cyx" userLabel="Notification View Controller" customClass="NotificationViewController" customModule="NotificationContentExtension" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" simulatedAppContext="notificationCenter" id="S3S-Oj-5AN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="300"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="252" translatesAutoresizingMaskIntoConstraints="NO" id="CLy-o9-OFX">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="270"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Hxv-K1-Eqi">
+                                <rect key="frame" x="0.0" y="270" width="320" height="30"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Olá humano" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zKi-m0-CHo">
+                                        <rect key="frame" x="114" y="0.0" width="92" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="HnA-qQ-eFi"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="zKi-m0-CHo" firstAttribute="centerX" secondItem="Hxv-K1-Eqi" secondAttribute="centerX" id="8xy-dG-vqe"/>
+                                    <constraint firstItem="zKi-m0-CHo" firstAttribute="centerY" secondItem="Hxv-K1-Eqi" secondAttribute="centerY" id="G2L-Fn-50Q"/>
+                                    <constraint firstAttribute="height" constant="30" id="MDq-bg-CEW"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="0.45882353186607361" green="0.74901962280273438" blue="0.66666668653488159" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Hxv-K1-Eqi" firstAttribute="bottom" secondItem="2BE-c3-nQJ" secondAttribute="bottom" id="06w-Gj-eNA"/>
+                            <constraint firstItem="2BE-c3-nQJ" firstAttribute="trailing" secondItem="Hxv-K1-Eqi" secondAttribute="trailing" id="eVl-NS-qs5"/>
+                            <constraint firstItem="CLy-o9-OFX" firstAttribute="trailing" secondItem="2BE-c3-nQJ" secondAttribute="trailing" id="eb3-x6-hgf"/>
+                            <constraint firstItem="Hxv-K1-Eqi" firstAttribute="top" secondItem="CLy-o9-OFX" secondAttribute="bottom" id="fX3-bc-7sV"/>
+                            <constraint firstItem="Hxv-K1-Eqi" firstAttribute="leading" secondItem="2BE-c3-nQJ" secondAttribute="leading" id="fqn-aE-0X8"/>
+                            <constraint firstItem="CLy-o9-OFX" firstAttribute="top" secondItem="2BE-c3-nQJ" secondAttribute="top" id="jLC-gu-JRn"/>
+                            <constraint firstItem="CLy-o9-OFX" firstAttribute="leading" secondItem="2BE-c3-nQJ" secondAttribute="leading" id="r9s-L6-QGO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="2BE-c3-nQJ"/>
+                    </view>
+                    <extendedEdge key="edgesForExtendedLayout"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="320" height="300"/>
+                    <connections>
+                        <outlet property="imageView" destination="CLy-o9-OFX" id="4r8-Eb-IH1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vXp-U4-Rya" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="52.799999999999997" y="27.886056971514247"/>
+        </scene>
+    </scenes>
+</document>
