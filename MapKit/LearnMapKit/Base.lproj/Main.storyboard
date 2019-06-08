@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14313.18" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zae-fn-czy">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14283.14"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="LearnMapKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="aD1-xo-6Rn">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
+                            </mapView>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="aD1-xo-6Rn" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="94S-b3-gXl"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="aD1-xo-6Rn" secondAttribute="trailing" id="KjY-SC-Qaq"/>
+                            <constraint firstItem="aD1-xo-6Rn" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="g6F-eH-yHb"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="aD1-xo-6Rn" secondAttribute="bottom" id="kEX-N1-CEz"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="aD1-xo-6Rn" id="EiJ-z8-jUR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="207" y="27"/>
+        </scene>
+        <!--Map Search View Controller-->
+        <scene sceneID="pRI-wx-VTx">
+            <objects>
+                <viewController id="zae-fn-czy" customClass="MapSearchViewController" customModule="LearnMapKit" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="sga-0I-xMQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="NZq-dS-bdR">
+                                <rect key="frame" x="0.0" y="80" width="375" height="587"/>
+                            </mapView>
+                            <searchBar contentMode="redraw" showsSearchResultsButton="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uBZ-wJ-SH5">
+                                <rect key="frame" x="0.0" y="20" width="375" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="Hoi-l4-92L"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="uBZ-wJ-SH5" firstAttribute="top" secondItem="ZGi-Zk-TFy" secondAttribute="top" id="4Zq-rb-7lD"/>
+                            <constraint firstItem="NZq-dS-bdR" firstAttribute="trailing" secondItem="ZGi-Zk-TFy" secondAttribute="trailing" id="Gvx-YP-tYu"/>
+                            <constraint firstItem="NZq-dS-bdR" firstAttribute="bottom" secondItem="ZGi-Zk-TFy" secondAttribute="bottom" id="OH1-f8-EaC"/>
+                            <constraint firstItem="NZq-dS-bdR" firstAttribute="leading" secondItem="ZGi-Zk-TFy" secondAttribute="leading" id="QpZ-vt-LjU"/>
+                            <constraint firstItem="uBZ-wJ-SH5" firstAttribute="leading" secondItem="ZGi-Zk-TFy" secondAttribute="leading" id="dZX-4k-El7"/>
+                            <constraint firstItem="NZq-dS-bdR" firstAttribute="top" secondItem="uBZ-wJ-SH5" secondAttribute="bottom" id="g7D-CD-5mO"/>
+                            <constraint firstItem="uBZ-wJ-SH5" firstAttribute="trailing" secondItem="ZGi-Zk-TFy" secondAttribute="trailing" id="uwP-eU-Pv5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="ZGi-Zk-TFy"/>
+                    </view>
+                    <connections>
+                        <outlet property="mapView" destination="NZq-dS-bdR" id="AOn-S2-MxQ"/>
+                        <outlet property="searchBar" destination="uBZ-wJ-SH5" id="T7N-WN-9Xe"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="2cW-tV-8HX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1061.5999999999999" y="26.53673163418291"/>
+        </scene>
+    </scenes>
+</document>
