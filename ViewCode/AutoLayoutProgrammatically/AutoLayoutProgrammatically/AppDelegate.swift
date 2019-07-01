@@ -21,7 +21,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let flowLayout = UICollectionViewFlowLayout()
         flowLayout.scrollDirection = .horizontal
-        let swipingViewController = SwipingCollectionViewController(collectionViewLayout: flowLayout)
+        let swipingViewModel = SwipingCollectionViewModel()
+        let swipingViewController = SwipingCollectionViewController(collectionViewLayout: flowLayout, viewModel: swipingViewModel)
         window?.rootViewController = swipingViewController
         
         return true

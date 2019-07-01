@@ -7,14 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		27C66C0C22C950BD00BC7D8D /* CodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27C66C0B22C950BD00BC7D8D /* CodeView.swift */; };
 		27CE9BEA22C7D2AF00B1D818 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE9BE922C7D2AF00B1D818 /* AppDelegate.swift */; };
 		27CE9BF122C7D2B000B1D818 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 27CE9BF022C7D2B000B1D818 /* Assets.xcassets */; };
 		27CE9BF422C7D2B000B1D818 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 27CE9BF222C7D2B000B1D818 /* LaunchScreen.storyboard */; };
 		27CE9BFC22C7EB2A00B1D818 /* SwipingCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE9BFB22C7EB2A00B1D818 /* SwipingCollectionViewController.swift */; };
 		27CE9C0022C7F09B00B1D818 /* SwipingCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27CE9BFF22C7F09B00B1D818 /* SwipingCollectionViewCell.swift */; };
+		27F43C4422CA2B2600085D13 /* SwipingCollectionViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F43C4322CA2B2600085D13 /* SwipingCollectionViewModel.swift */; };
+		27F43C4622CA2DF500085D13 /* SwipingCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F43C4522CA2DF500085D13 /* SwipingCollectionViewCellViewModel.swift */; };
+		27F43C4822CA2E8000085D13 /* Page.swift in Sources */ = {isa = PBXBuildFile; fileRef = 27F43C4722CA2E8000085D13 /* Page.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		27C66C0B22C950BD00BC7D8D /* CodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeView.swift; sourceTree = "<group>"; };
 		27CE9BE622C7D2AF00B1D818 /* AutoLayoutProgrammatically.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AutoLayoutProgrammatically.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		27CE9BE922C7D2AF00B1D818 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		27CE9BF022C7D2B000B1D818 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -22,6 +27,9 @@
 		27CE9BF522C7D2B000B1D818 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		27CE9BFB22C7EB2A00B1D818 /* SwipingCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCollectionViewController.swift; sourceTree = "<group>"; };
 		27CE9BFF22C7F09B00B1D818 /* SwipingCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCollectionViewCell.swift; sourceTree = "<group>"; };
+		27F43C4322CA2B2600085D13 /* SwipingCollectionViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCollectionViewModel.swift; sourceTree = "<group>"; };
+		27F43C4522CA2DF500085D13 /* SwipingCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipingCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		27F43C4722CA2E8000085D13 /* Page.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Page.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,8 +66,12 @@
 				27CE9BF022C7D2B000B1D818 /* Assets.xcassets */,
 				27CE9BF222C7D2B000B1D818 /* LaunchScreen.storyboard */,
 				27CE9BF522C7D2B000B1D818 /* Info.plist */,
-				27CE9BFB22C7EB2A00B1D818 /* SwipingCollectionViewController.swift */,
+				27F43C4522CA2DF500085D13 /* SwipingCollectionViewCellViewModel.swift */,
 				27CE9BFF22C7F09B00B1D818 /* SwipingCollectionViewCell.swift */,
+				27F43C4322CA2B2600085D13 /* SwipingCollectionViewModel.swift */,
+				27CE9BFB22C7EB2A00B1D818 /* SwipingCollectionViewController.swift */,
+				27C66C0B22C950BD00BC7D8D /* CodeView.swift */,
+				27F43C4722CA2E8000085D13 /* Page.swift */,
 			);
 			path = AutoLayoutProgrammatically;
 			sourceTree = "<group>";
@@ -134,9 +146,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				27F43C4422CA2B2600085D13 /* SwipingCollectionViewModel.swift in Sources */,
 				27CE9BFC22C7EB2A00B1D818 /* SwipingCollectionViewController.swift in Sources */,
 				27CE9C0022C7F09B00B1D818 /* SwipingCollectionViewCell.swift in Sources */,
 				27CE9BEA22C7D2AF00B1D818 /* AppDelegate.swift in Sources */,
+				27F43C4822CA2E8000085D13 /* Page.swift in Sources */,
+				27C66C0C22C950BD00BC7D8D /* CodeView.swift in Sources */,
+				27F43C4622CA2DF500085D13 /* SwipingCollectionViewCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

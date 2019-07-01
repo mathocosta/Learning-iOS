@@ -8,21 +8,86 @@
 
 import UIKit
 
-private let reuseIdentifier = "Cell"
+final class SwipingCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
 
-class SwipingCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
-
+    // MARK: - Properties
+    private let reuseIdentifier = "Cell"
+    
+    let viewModel: SwipingCollectionViewModel
+    
+    let previousButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Prev", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.gray, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(onPreviousButton(sender:)), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    let nextButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("Next", for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.setTitleColor(.gray, for: .normal)
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(onNextButton(sender:)), for: .touchUpInside)
+        
+        return button
+    }()
+    
+    let pageControl: UIPageControl = {
+        let pageControl = UIPageControl()
+        pageControl.currentPage = 0
+        pageControl.numberOfPages = 2
+        pageControl.currentPageIndicatorTintColor = .red
+        pageControl.pageIndicatorTintColor = .gray
+        
+        return pageControl
+    }()
+    
+    lazy var bottomControlsStackView: UIStackView = {
+        let stackView = UIStackView(arrangedSubviews: [self.previousButton, self.pageControl, self.nextButton])
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        stackView.distribution = .fillEqually
+        
+        return stackView
+    }()
+    
+    // MARK: Lifecycle
+    init(collectionViewLayout layout: UICollectionViewLayout, viewModel: SwipingCollectionViewModel) {
+        self.viewModel = viewModel
+        super.init(collectionViewLayout: layout)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Register cell classes
         self.collectionView.backgroundColor = .white
-        self.collectionView?.register(SwipingCollectionViewCell.self, forCellWithReuseIdentifier: reuseIdentifier)
+        self.collectionView?.register(SwipingCollectionViewCell.self, forCellWithReuseIdentifier: self.reuseIdentifier)
         self.collectionView.isPagingEnabled = true
-        // Do any additional setup after loading the view.
+        
+        self.setupView()
+    }
+    
+    // MARK: Actions
+    @objc func onPreviousButton(sender: UIButton) {
+        let prevItem = max(self.pageControl.currentPage - 1, 0)
+        let indexPath = IndexPath(item: prevItem, section: 0)
+        self.pageControl.currentPage = prevItem
+        self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    }
+    
+    @objc func onNextButton(sender: UIButton) {
+        let nextItem = min(self.pageControl.currentPage + 1, self.viewModel.pages.count - 1)
+        let indexPath = IndexPath(item: nextItem, section: 0)
+        self.pageControl.currentPage = nextItem
+        self.collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
     }
 
     // MARK: UICollectionViewDataSource
@@ -33,11 +98,19 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 4
+        return self.viewModel.pages.count
     }
 
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: reuseIdentifier, for: indexPath)
+    override func collectionView(_ collectionView: UICollectionView,
+                                 cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: self.reuseIdentifier,
+                                                            for: indexPath) as? SwipingCollectionViewCell else {
+            fatalError("The dequeued cell is not an instance of ContactListTableViewCell.")
+        }
+        
+        let currentPage = self.viewModel.pages[indexPath.item]
+        let cellViewModel = SwipingCollectionViewCellViewModel(page: currentPage)
+        cell.viewModel = cellViewModel
     
         return cell
     }
@@ -50,36 +123,33 @@ class SwipingCollectionViewController: UICollectionViewController, UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
         return 0
     }
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
     
+    // UIScrollViewDelegate
+    override func scrollViewWillEndDragging(_ scrollView: UIScrollView,
+                                            withVelocity velocity: CGPoint, targetContentOffset: UnsafeMutablePointer<CGPoint>) {
+        let x = targetContentOffset.pointee.x
+        
+        self.pageControl.currentPage = Int(x / view.frame.width)
     }
-    */
+    
+}
 
+extension SwipingCollectionViewController: CodeView {
+    
+    func buildViewHierarchy() {
+        self.view.addSubview(self.bottomControlsStackView)
+    }
+    
+    func setupConstraints() {
+        NSLayoutConstraint.activate([
+            self.bottomControlsStackView.bottomAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.bottomAnchor),
+            self.bottomControlsStackView.leadingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.leadingAnchor),
+            self.bottomControlsStackView.trailingAnchor.constraint(equalTo: self.view.safeAreaLayoutGuide.trailingAnchor),
+            self.bottomControlsStackView.heightAnchor.constraint(equalToConstant: 50)
+        ])
+    }
+    
+    func setupAdditionalConfiguration() {
+    }
+    
 }
