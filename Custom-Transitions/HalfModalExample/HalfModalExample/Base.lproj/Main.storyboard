@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="HalfModalExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TbG-A0-1A8">
+                                <rect key="frame" x="142.5" y="433" width="129" height="30"/>
+                                <state key="normal" title="Present half modal"/>
+                                <connections>
+                                    <action selector="presentHalfModalAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="dCk-f1-Lct"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xrr-lu-lWd">
+                                <rect key="frame" x="157.5" y="471" width="99" height="30"/>
+                                <state key="normal" title="Present dialog"/>
+                                <connections>
+                                    <action selector="presentDialogAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gzd-sd-peM"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TbG-A0-1A8" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="PRf-ia-HgX"/>
+                            <constraint firstItem="xrr-lu-lWd" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="ayf-LJ-TcP"/>
+                            <constraint firstItem="TbG-A0-1A8" firstAttribute="centerX" secondItem="xrr-lu-lWd" secondAttribute="centerX" id="c5X-Db-P0b"/>
+                            <constraint firstItem="xrr-lu-lWd" firstAttribute="top" secondItem="TbG-A0-1A8" secondAttribute="bottom" constant="8" id="hs3-s0-roe"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <segue destination="I5j-J9-t1S" kind="presentation" identifier="ShowDetails" id="YS3-BD-jx1"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.68115942028987" y="125.89285714285714"/>
+        </scene>
+        <!--Details View Controller-->
+        <scene sceneID="gid-9x-yHS">
+            <objects>
+                <viewController id="I5j-J9-t1S" customClass="DetailsViewController" customModule="HalfModalExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wQD-MW-uPu">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Olá modal" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dMw-84-aJc">
+                                <rect key="frame" x="16" y="410.5" width="382" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="dMw-84-aJc" firstAttribute="centerY" secondItem="wQD-MW-uPu" secondAttribute="centerY" id="2JY-lv-H8B"/>
+                            <constraint firstItem="dMw-84-aJc" firstAttribute="leading" secondItem="yd8-4S-C2l" secondAttribute="leading" constant="16" id="LEk-wz-jGt"/>
+                            <constraint firstItem="yd8-4S-C2l" firstAttribute="trailing" secondItem="dMw-84-aJc" secondAttribute="trailing" constant="16" id="sjg-og-rpD"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="yd8-4S-C2l"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VGg-N6-xsR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1178" y="126"/>
+        </scene>
+    </scenes>
+</document>
